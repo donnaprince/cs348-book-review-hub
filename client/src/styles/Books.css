@@ -1,0 +1,201 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h2 {
+  text-align: center;
+  color: #3a3a3a;
+  margin-bottom: 1.5rem;
+}
+
+.banner {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 0.6rem;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.banner:has(✅) {
+  background-color: #e0f7e9;
+  color: #2e7d32;
+}
+.banner:has(⚠️) {
+  background-color: #fff3cd;
+  color: #856404;
+}
+.banner:has(🚫),
+.banner:has(❌) {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.add-genre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.add-genre h4 {
+  margin: 0;
+  color: #3a3a3a;
+}
+
+.add-genre input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.4rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.add-genre button {
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-genre button:hover {
+  background-color: #2e3b91;
+}
+
+.filter-section {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-section select,
+.filter-section input {
+  padding: 0.4rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.filter-section button {
+  background-color: #4a6fa5;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.filter-section button:hover {
+  background-color: #3a5a86;
+}
+
+.clear-btn {
+  background-color: #888;
+}
+
+.clear-btn:hover {
+  background-color: #666;
+}
+
+.book-form {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.book-form input,
+.book-form select {
+  padding: 0.4rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.book-form button {
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.book-form .add {
+  background-color: #2a9d8f;
+}
+
+.book-form .add:hover {
+  background-color: #21867b;
+}
+
+.book-form .update {
+  background-color: #ffb703;
+}
+
+.book-form .update:hover {
+  background-color: #e69a00;
+}
+
+.book-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.book-table th {
+  background-color: #f0f0f0;
+  padding: 8px;
+}
+
+.book-table td {
+  padding: 8px;
+  border-top: 1px solid #ddd;
+}
+
+.book-table button {
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 2px;
+  transition: background-color 0.2s;
+}
+
+.book-table .edit {
+  background-color: #ffb703;
+}
+
+.book-table .edit:hover {
+  background-color: #e69a00;
+}
+
+.book-table .delete {
+  background-color: #e63946;
+}
+
+.book-table .delete:hover {
+  background-color: #c71f2b;
+}
+
+.no-books {
+  color: #888;
+  font-style: italic;
+}
