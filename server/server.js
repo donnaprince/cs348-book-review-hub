@@ -13,21 +13,29 @@ await seedGenres();
 
 const app = express();
 
-/* ✅ CORS configuration */
+/* ✅ FIXED CORS — includes preflight (OPTIONS) */
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://cs348-book-review-hub.vercel.app"
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000", 
-      "https://cs348-book-review-hub.vercel.app"  // <-- Add your deployed frontend!
-    ],
+    origin: function (origin, callback) {
+      // Allow requests with no origin (e.g. server-to-server)
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS not allowed for this origin"));
+      }
+    },
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],
   })
 );
 
-/* Alternatively: open CORS fully (safe enough for class project)
-app.use(cors());
-*/
+// ✅ Preflight support
+app.options("*", cors());
 
 /* ✅ Middleware */
 app.use(bodyParser.json());
