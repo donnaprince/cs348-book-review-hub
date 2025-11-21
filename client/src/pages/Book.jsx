@@ -10,7 +10,7 @@ function Books() {
   const [banner, setBanner] = useState("");
   const [newGenre, setNewGenre] = useState(""); 
 
-  const API_BASE = "http://localhost:5050";
+  const API_BASE = "https://book-review-backend-sh6n.onrender.com";
 
   const fetchBooks = async (customFilters = filters) => {
     try {
