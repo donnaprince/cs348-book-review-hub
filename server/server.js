@@ -13,40 +13,36 @@ await seedGenres();
 
 const app = express();
 
-/* ✅ FIXED CORS — includes preflight (OPTIONS) */
 const allowedOrigins = [
   "http://localhost:3000",
   "https://cs348-book-review-hub.vercel.app"
 ];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (e.g. server-to-server)
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("CORS not allowed for this origin"));
-      }
-    },
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type"],
-  })
-);
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
 
-// ✅ Preflight support
-app.options("*", cors());
+  if (allowedOrigins.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
 
-/* ✅ Middleware */
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+
+  next();
+});
+
 app.use(bodyParser.json());
 
-/* ✅ Routes */
+
 app.use("/api/books", booksRouter);
 app.use("/api/genres", genresRouter);
 
-/* ✅ Test route */
 app.get("/", (req, res) => res.send("Backend running OK"));
 
-/* ✅ Start server */
+
 const PORT = process.env.PORT || 5050;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
