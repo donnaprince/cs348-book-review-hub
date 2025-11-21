@@ -16,18 +16,25 @@ const app = express();
 /* ✅ CORS configuration */
 app.use(
   cors({
-    origin: ["http://localhost:3000"], // React dev server
+    origin: [
+      "http://localhost:3000", 
+      "https://cs348-book-review-hub.vercel.app"  // <-- Add your deployed frontend!
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],
   })
 );
+
+/* Alternatively: open CORS fully (safe enough for class project)
+app.use(cors());
+*/
 
 /* ✅ Middleware */
 app.use(bodyParser.json());
 
 /* ✅ Routes */
 app.use("/api/books", booksRouter);
-app.use("/api/genres", genresRouter); // <— this is the one that connects your new POST route
+app.use("/api/genres", genresRouter);
 
 /* ✅ Test route */
 app.get("/", (req, res) => res.send("Backend running OK"));
